@@ -25,10 +25,20 @@ class PQ(object):
         pass
 
     def _swim(self, idx):
-        while idx >= 1:
+        while idx > 1:
             item = self.pq[idx]
             parent = self.pq[idx//2]
             if parent >= item:
                 return
             self._exch(idx, idx//2)
             idx = idx // 2
+
+
+if __name__ == "__main__":
+    pq = PQ()
+    pq.insert(1);
+    pq.insert(2);
+    pq.insert(0);
+    pq.insert(5);
+    from pprint import pprint
+    pprint(pq.pq)
