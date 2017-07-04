@@ -10,17 +10,25 @@ class PQ(object):
         self.pq = [None]
         self.size = 0
 
+    def insert(self, item):
+        self.pq.append(item)
+        self.size += 1
+        self._swim(self.size)
+
     def del_max(self):
         pass
 
-    def insert(self, key):
-        pass
-
     def _exch(self, idx1, idx2):
-        pass
+        self.pq[idx1], self.pq[idx2] = self.pq[idx2], self.pq[idx1]
 
     def _sink(self, idx):
         pass
 
     def _swim(self, idx):
-        pass
+        while idx >= 1:
+            item = self.pq[idx]
+            parent = self.pq[idx//2]
+            if parent >= item:
+                return
+            self._exch(idx, idx//2)
+            idx = idx // 2
