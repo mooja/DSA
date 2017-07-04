@@ -16,13 +16,36 @@ class PQ(object):
         self._swim(self.size)
 
     def del_max(self):
-        pass
+        if not self.size > 1:
+            return
+        rv = self.pq[1]
+        self._exch(1, self.size)
+        self.pq.pop()
+        self.size -= 1
+        self._sink(1)
+        return rv
 
     def _exch(self, idx1, idx2):
         self.pq[idx1], self.pq[idx2] = self.pq[idx2], self.pq[idx1]
 
     def _sink(self, idx):
-        pass
+        while idx*2 < self.size:
+            item = self.pq[idx]
+            only_one_child = idx*2+1 > self.size
+            if only_one_child:
+                child = self.pq[idx*2]
+                if child <= item:
+                    return
+                self._exch(idx, idx*2)
+                idx = idx*2
+            else:
+                child1 = self.pq[idx*2]
+                child2 = self.pq[idx*2+1]
+                if not (child1 > item or child2 > item):
+                    return
+                bigger_child_idx = idx*2 if child1 > child2 else idx*2+1
+                self._exch(idx, bigger_child_idx)
+                idx = bigger_child_idx
 
     def _swim(self, idx):
         while idx > 1:
@@ -35,10 +58,14 @@ class PQ(object):
 
 
 if __name__ == "__main__":
-    pq = PQ()
-    pq.insert(1);
-    pq.insert(2);
-    pq.insert(0);
-    pq.insert(5);
+    import random
     from pprint import pprint
+    pq = PQ()
+    numbers = list(range(0, 15))
+    random.shuffle(numbers)
+    pprint(numbers)
+    for n in numbers:
+        pq.insert(n)
     pprint(pq.pq)
+    while pq.size > 1:
+        pprint(pq.del_max())
