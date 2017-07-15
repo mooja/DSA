@@ -1,0 +1,26 @@
+{
+  "name": "DSA",
+  "version": "1.0.0",
+  "description": "Data Structures & Algorithms ----------------------------",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mooja/DSA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mooja/DSA/issues"
+  },
+  "homepage": "https://github.com/mooja/DSA#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.13",
+    "nodemon": "^1.11.0",
+    "ts-node": "^3.2.0",
+    "typescript": "^2.4.1"
+  }
+}
