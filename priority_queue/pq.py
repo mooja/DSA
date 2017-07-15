@@ -59,13 +59,18 @@ class PQ(object):
 
 if __name__ == "__main__":
     import random
-    from pprint import pprint
-    pq = PQ()
-    numbers = list(range(0, 15))
-    random.shuffle(numbers)
-    pprint(numbers)
-    for n in numbers:
-        pq.insert(n)
-    pprint(pq.pq)
-    while pq.size > 1:
-        pprint(pq.del_max())
+    for i in range(1, 20, 5):
+        pq = PQ()
+        numbers = list(range(i))
+        random.shuffle(numbers)
+        print('Initial:', numbers)
+
+        for n in numbers:
+            pq.insert(n)
+        print('Heap Shape:', pq.pq[1:])
+
+        result = []
+        while pq.size > 0:
+            result.append(pq.del_max())
+        print('Heap Sorted:', result)
+        print()
