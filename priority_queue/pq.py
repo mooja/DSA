@@ -16,8 +16,8 @@ class PQ(object):
         self._swim(self.size)
 
     def del_max(self):
-        if not self.size > 1:
-            return
+        if not self.size > 0:
+            raise IndexError
         rv = self.pq[1]
         self._exch(1, self.size)
         self.pq.pop()
